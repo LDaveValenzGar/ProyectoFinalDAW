@@ -5,18 +5,19 @@ create type full_name as(
 );
 
 create table consult_type(
-	idcnslt int not null AUTO_INCREMENT,
-	cons_type varchar(35),
+	idcnslt serial,
+	cons_type varchar(20),
 	constraint pktipo_consulta primary key(idcnslt)
 );
+
 create table pacient_type(
-	idtypepacient int not null AUTO_INCREMENT,
+	idtypepacient serial,
 	pacient_type varchar(20),
 	constraint pkpaciente_tipo primary key(idtypepacient)
 );
 
 create table pacient(
-	idpacient int not null AUTO_INCREMENT,
+	idpacient varchar(10) not null,
 	pacient_name full_name not null,
 	age int not null,
 	datebirth date not null, 
@@ -29,7 +30,7 @@ create table pacient(
 );
 
 create table doctor(
-	iddoctor int not null AUTO_INCREMENT,
+	iddoctor varchar(10) not null,
 	doctor_name full_name not null,
 	dr_age int not null,
 	dr_birth date not null,
@@ -41,7 +42,7 @@ create table doctor(
 );
 
 create table assistant(
-	idassistant int not null AUTO_INCREMENT,
+	idassistant varchar(10) not null,
 	assistant_name full_name not null,
 	assist_age int not null,
 	assist_birth date not null,
@@ -51,7 +52,7 @@ create table assistant(
 );
 
 create table appointments(
-	idappoint int not null AUTO_INCREMENT,
+	idappoint serial,
 	appoint_cost decimal(5,2) not null,
 	consult_tp int not null,
 	constraint pkappoint primary key(idappoint),
@@ -59,7 +60,7 @@ create table appointments(
 );
 
 create table vaccine_supplier(
-	idsupplier int not null AUTO_INCREMENT,
+	idsupplier varchar(10) not null,
 	supplier_name text not null,
 	address varchar(50),
 	supplier_phone varchar(15),
@@ -67,25 +68,25 @@ create table vaccine_supplier(
 );
 
 create table vaccines(
-	idvaccine int not null AUTO_INCREMENT,
+	idvaccine serial,
 	vaccine_name text not null,
 	vaccine_type text not null,
 	vaccine_cost decimal(5,2) not null,
 	exp date not null,
 	lot char(10) not null,
 	stock int not null,
-	supplier int not null,
+	supplier varchar(10) not null,
 	constraint pkvaccine primary key(idvaccine),
 	foreign key (supplier) references vaccine_supplier(idsupplier)
 );
 
 create table pacient_appointments(
-	idpcnt_ppntmnt int not null AUTO_INCREMENT,
-	id_pacient int not null,
+	idpcnt_ppntmnt serial,
+	id_pacient varchar(10) not null,
 	appoint_date date not null,
 	appoint_hour char(6),
-	id_doctor int not null,
-	id_assist int not null,
+	id_doctor varchar(10) not null,
+	id_assist varchar(10) not null,
 	id_appointment int not null,
 	id_consultype int not null,
 	constraint pk_pacientappointments primary key(idpcnt_ppntmnt),
@@ -95,3 +96,11 @@ create table pacient_appointments(
 	foreign key (id_appointment) references appointments(idappoint),
 	foreign key (id_consultype) references consult_type(idcnslt)
 );
+
+--Datos para tablas formulario
+insert into consult_type (cons_type) values ('Revision General');
+insert into consult_type (cons_type) values ('Vacunacion');
+insert into consult_type (cons_type) values ('Padecimiento Especifico');
+
+insert into pacient_type (pacient_type) values ('Primera Vez');
+insert into pacient_type (pacient_type) values ('Regular');
