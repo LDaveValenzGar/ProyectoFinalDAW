@@ -1,28 +1,59 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class AsistenteJB implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private int idasistente;
+	private String idasistente;
 	private String asist_name;
 	private String asist_paterno;
 	private String asist_materno;
 	private int asist_edad;
-	private String asist_f_nac;
+	private Date asist_f_nac;
 	private String educacion;
 	private String telefono_asist;
 	
 	public AsistenteJB() {
 		
 	}
+	
+	//DELETEUSER
+	public AsistenteJB(String idasistente) {
+		this.idasistente = idasistente;
+	}
 
-	public int getIdasistente() {
+	//GETUSER y UPDATEUSER
+	public AsistenteJB(String asist_name, String asist_paterno, String asist_materno, int asist_edad, Date asist_f_nac,
+			String educacion, String telefono_asist) {
+		this.asist_name = asist_name;
+		this.asist_paterno = asist_paterno;
+		this.asist_materno = asist_materno;
+		this.asist_edad = asist_edad;
+		this.asist_f_nac = asist_f_nac;
+		this.educacion = educacion;
+		this.telefono_asist = telefono_asist;
+	}
+
+	//ADDUSER 
+	public AsistenteJB(String idasistente, String asist_name, String asist_paterno, String asist_materno, int asist_edad,
+			Date asist_f_nac, String educacion, String telefono_asist) {
+		this.idasistente = idasistente;
+		this.asist_name = asist_name;
+		this.asist_paterno = asist_paterno;
+		this.asist_materno = asist_materno;
+		this.asist_edad = asist_edad;
+		this.asist_f_nac = asist_f_nac;
+		this.educacion = educacion;
+		this.telefono_asist = telefono_asist;
+	}
+	
+	public String getIdasistente() {
 		return idasistente;
 	}
 
-	public void setIdasistente(int idasistente) {
+	public void setIdasistente(String idasistente) {
 		this.idasistente = idasistente;
 	}
 
@@ -58,11 +89,11 @@ public class AsistenteJB implements Serializable{
 		this.asist_edad = asist_edad;
 	}
 
-	public String getAsist_f_nac() {
+	public Date getAsist_f_nac() {
 		return asist_f_nac;
 	}
 
-	public void setAsist_f_nac(String asist_f_nac) {
+	public void setAsist_f_nac(Date asist_f_nac) {
 		this.asist_f_nac = asist_f_nac;
 	}
 

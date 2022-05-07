@@ -1,1 +1,11 @@
-datos\ConClassToBD.class
+modelo\PacienteCitasJB.class
+datos\AsistenteDAO.class
+modelo\VacunasJB.class
+datos\ConexionBD.class
+modelo\DoctorJB.class
+modelo\CitasJB.class
+modelo\ProveedorJB.class
+datos\DoctorDAO.class
+modelo\AsistenteJB.class
+datos\PacienteDAO.class
+modelo\PacienteJB.class

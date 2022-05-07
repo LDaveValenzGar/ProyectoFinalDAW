@@ -1,16 +1,17 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class DoctorJB implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private int iddoctor;
+	private String iddoctor;
 	private String doc_name;
 	private String doc_paterno;
 	private String doc_materno;
 	private int dr_edad;
-	private String fecha_nacdoc;
+	private Date fecha_nacdoc;
 	private String num_doctor;
 	private String especialidad;
 	private String horario;
@@ -20,11 +21,45 @@ public class DoctorJB implements Serializable{
 		
 	}
 
-	public int getIddoctor() {
+	//DELETEUSER
+	public DoctorJB(String iddoctor) {
+		this.iddoctor = iddoctor;
+	}
+	
+	//GETUSER y UPDATEUSER
+	public DoctorJB(String doc_name, String doc_paterno, String doc_materno, int dr_edad, Date fecha_nacdoc,
+			String num_doctor, String especialidad, String horario, String cargo) {
+		this.doc_name = doc_name;
+		this.doc_paterno = doc_paterno;
+		this.doc_materno = doc_materno;
+		this.dr_edad = dr_edad;
+		this.fecha_nacdoc = fecha_nacdoc;
+		this.num_doctor = num_doctor;
+		this.especialidad = especialidad;
+		this.horario = horario;
+		this.cargo = cargo;
+	}
+	
+	//ADDUSER 
+	public DoctorJB(String iddoctor, String doc_name, String doc_paterno, String doc_materno, int dr_edad,
+			Date fecha_nacdoc, String num_doctor, String especialidad, String horario, String cargo) {
+		this.iddoctor = iddoctor;
+		this.doc_name = doc_name;
+		this.doc_paterno = doc_paterno;
+		this.doc_materno = doc_materno;
+		this.dr_edad = dr_edad;
+		this.fecha_nacdoc = fecha_nacdoc;
+		this.num_doctor = num_doctor;
+		this.especialidad = especialidad;
+		this.horario = horario;
+		this.cargo = cargo;
+	}
+
+	public String getIddoctor() {
 		return iddoctor;
 	}
 
-	public void setIddoctor(int iddoctor) {
+	public void setIddoctor(String iddoctor) {
 		this.iddoctor = iddoctor;
 	}
 
@@ -60,11 +95,11 @@ public class DoctorJB implements Serializable{
 		this.dr_edad = dr_edad;
 	}
 
-	public String getFecha_nacdoc() {
+	public Date getFecha_nacdoc() {
 		return fecha_nacdoc;
 	}
 
-	public void setFecha_nacdoc(String fecha_nacdoc) {
+	public void setFecha_nacdoc(Date fecha_nacdoc) {
 		this.fecha_nacdoc = fecha_nacdoc;
 	}
 

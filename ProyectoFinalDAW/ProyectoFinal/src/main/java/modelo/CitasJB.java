@@ -12,6 +12,15 @@ public class CitasJB implements Serializable{
 	public CitasJB() {
 		
 	}
+		
+	public CitasJB(int idcitas) {
+		this.idcitas = idcitas;
+	}
+		
+	public CitasJB(double costo_cita, int tipo_consulta) {
+		this.costo_cita = costo_cita;
+		this.tipo_consulta = tipo_consulta;
+	}
 
 	public CitasJB(int idcitas, double costo_cita, int tipo_consulta) {
 		this.idcitas = idcitas;

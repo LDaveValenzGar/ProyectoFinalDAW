@@ -1,6 +1,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class VacunasJB implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -9,13 +10,40 @@ public class VacunasJB implements Serializable{
 	private String nombre_vacuna;
 	private String vacuna_tipo;
 	private double precio_vacuna;
-	private String caducidad;
+	private Date caducidad;
 	private String lote;
 	private int stock;
-	private int proveedor;
+	private String proveedor;
 	
 	public VacunasJB() {
 		
+	}
+	
+	public VacunasJB(int idvacuna) {
+		this.idvacuna = idvacuna;
+	}
+	
+	public VacunasJB(String nombre_vacuna, String vacuna_tipo, double precio_vacuna,Date caducidad, String lote,
+			int stock, String proveedor) {
+		this.nombre_vacuna = nombre_vacuna;
+		this.vacuna_tipo = vacuna_tipo;
+		this.precio_vacuna = precio_vacuna;
+		this.caducidad = caducidad;
+		this.lote = lote;
+		this.stock = stock;
+		this.proveedor = proveedor;
+	}
+	
+	public VacunasJB(int idvacuna, String nombre_vacuna, String vacuna_tipo, double precio_vacuna, Date caducidad,
+			String lote, int stock, String proveedor) {
+		this.idvacuna = idvacuna;
+		this.nombre_vacuna = nombre_vacuna;
+		this.vacuna_tipo = vacuna_tipo;
+		this.precio_vacuna = precio_vacuna;
+		this.caducidad = caducidad;
+		this.lote = lote;
+		this.stock = stock;
+		this.proveedor = proveedor;
 	}
 
 	public int getIdvacuna() {
@@ -50,11 +78,11 @@ public class VacunasJB implements Serializable{
 		this.precio_vacuna = precio_vacuna;
 	}
 
-	public String getCaducidad() {
+	public Date getCaducidad() {
 		return caducidad;
 	}
 
-	public void setCaducidad(String caducidad) {
+	public void setCaducidad(Date caducidad) {
 		this.caducidad = caducidad;
 	}
 
@@ -74,11 +102,11 @@ public class VacunasJB implements Serializable{
 		this.stock = stock;
 	}
 
-	public int getProveedor() {
+	public String getProveedor() {
 		return proveedor;
 	}
 
-	public void setProveedor(int proveedor) {
+	public void setProveedor(String proveedor) {
 		this.proveedor = proveedor;
 	}
 

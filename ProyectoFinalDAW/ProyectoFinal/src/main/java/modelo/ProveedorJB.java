@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class ProveedorJB implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private int idproveedor;
+	private String idproveedor;
 	private String nombre_proveedor;
 	private String direccion;
 	private String telefono_sup;
@@ -13,12 +13,29 @@ public class ProveedorJB implements Serializable {
 	public ProveedorJB() {
 		
 	}
+		
+	public ProveedorJB(String idproveedor) {
+		this.idproveedor = idproveedor;
+	}
+	
+	public ProveedorJB(String nombre_proveedor, String direccion, String telefono_sup) {
+		this.nombre_proveedor = nombre_proveedor;
+		this.direccion = direccion;
+		this.telefono_sup = telefono_sup;
+	}
+	
+	public ProveedorJB(String idproveedor, String nombre_proveedor, String direccion, String telefono_sup) {
+		this.idproveedor = idproveedor;
+		this.nombre_proveedor = nombre_proveedor;
+		this.direccion = direccion;
+		this.telefono_sup = telefono_sup;
+	}
 
-	public int getIdproveedor() {
+	public String getIdproveedor() {
 		return idproveedor;
 	}
 
-	public void setIdproveedor(int idproveedor) {
+	public void setIdproveedor(String idproveedor) {
 		this.idproveedor = idproveedor;
 	}
 
