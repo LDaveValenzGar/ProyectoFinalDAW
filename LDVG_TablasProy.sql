@@ -6,13 +6,13 @@ create type full_name as(
 
 create table consult_type(
 	idcnslt serial,
-	cons_type varchar(20),
+	cons_type text,
 	constraint pktipo_consulta primary key(idcnslt)
 );
 
 create table pacient_type(
 	idtypepacient serial,
-	pacient_type varchar(20),
+	pacient_type text,
 	constraint pkpaciente_tipo primary key(idtypepacient)
 );
 
@@ -20,13 +20,23 @@ create table pacient(
 	idpacient varchar(10) not null,
 	pacient_name full_name not null,
 	age int not null,
+	sexo char(3),
 	datebirth date not null, 
-	parent_name full_name not null,
+	mother_name varchar(50) not null,
+	father_name varchar(50) not null,
 	phone_number varchar(15),
---	vaccines int not null,
 	pacient_t int not null,
+	weight decimal(3,2) not null,
+	height int not null,
+	temp decimal(2,2) not null,
 	constraint pkpacient primary key(idpacient),
 	foreign key (pacient_t) references pacient_type(idtypepacient)
+);
+
+create table job(
+	idjob serial,
+	job_name varchar(20),
+	constraint pkjob primary key(idjob)
 );
 
 create table doctor(
@@ -36,9 +46,10 @@ create table doctor(
 	dr_birth date not null,
 	dr_phone varchar(15),
 	specialty varchar(35),
-	schedule varchar(20),
-	position varchar(20),
-	constraint pkdoctor primary key(iddoctor)
+	pass varchar(10),
+	djobid int not null,
+	constraint pkdoctor primary key(iddoctor),
+	foreign key (djobid) references job(idjob)
 );
 
 create table assistant(
@@ -48,23 +59,31 @@ create table assistant(
 	assist_birth date not null,
 	education varchar(25),
 	assist_phone varchar(15),
-	constraint pkassist primary key(idassistant)
+	pass varchar(10),
+	ajobid int not null,
+	constraint pkassist primary key(idassistant),
+	foreign key (ajobid) references job(idjob)
 );
 
 create table appointments(
 	idappoint serial,
-	appoint_cost decimal(5,2) not null,
-	consult_tp int not null,
+	reason_appoint int not null,
+	diagnostic text,
+	prescription text,
 	constraint pkappoint primary key(idappoint),
-	foreign key (consult_tp) references consult_type(idcnslt)
+	foreign key (reason_appoint) references consult_type(idcnslt)
 );
 
 create table vaccine_supplier(
-	idsupplier varchar(10) not null,
-	supplier_name text not null,
-	address varchar(50),
-	supplier_phone varchar(15),
+	idsupplier serial,
+	supplier_name varchar(50),
 	constraint pksupplier primary key(idsupplier)
+);
+
+create table vaccine_manufacturer(
+	idmanufacturer serial,
+	manufacturer_name text not null,
+	constraint pkmanufacturer primary key(idmanufacturer)
 );
 
 create table vaccines(
@@ -75,8 +94,10 @@ create table vaccines(
 	exp date not null,
 	lot char(10) not null,
 	stock int not null,
-	supplier varchar(10) not null,
+	manufacturer int not null,
+	supplier int not null,
 	constraint pkvaccine primary key(idvaccine),
+	foreign key (manufacturer) references vaccine_manufacturer(idmanufacturer)
 	foreign key (supplier) references vaccine_supplier(idsupplier)
 );
 
@@ -104,3 +125,8 @@ insert into consult_type (cons_type) values ('Padecimiento Especifico');
 
 insert into pacient_type (pacient_type) values ('Primera Vez');
 insert into pacient_type (pacient_type) values ('Regular');
+insert into pacient_type (pacient_type) values ('Particular');
+
+insert into job (job_name) values ('Doctor-Admin');
+insert into job (job_name) values ('Medico General');
+insert into job (job_name) values ('Asistente Medico');
